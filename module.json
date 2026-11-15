@@ -1,0 +1,35 @@
+{
+  "id": "ah-pf2e-auras",
+  "title": "AH PF2E Auras",
+  "description": "Tells the GM privately when a token moves into or starts its turn in an aura, then posts a PF2e-style save request with an inline save, damage you can roll and conditions and effects you can drag onto tokens.",
+  "version": "0.1.0",
+  "authors": [
+    {
+      "name": "Adam Hayes"
+    }
+  ],
+  "compatibility": {
+    "minimum": "14",
+    "verified": "14"
+  },
+  "relationships": {
+    "systems": [
+      {
+        "id": "pf2e",
+        "type": "system",
+        "compatibility": {
+          "minimum": "7.0.0"
+        }
+      }
+    ]
+  },
+  "esmodules": [
+    "scripts/main.js"
+  ],
+  "styles": [
+    "styles/ah-pf2e-auras.css"
+  ],
+  "url": "https://github.com/TheAdamHayes/AH-PF2E-Auras",
+  "manifest": "https://github.com/TheAdamHayes/AH-PF2E-Auras/releases/latest/download/module.json",
+  "download": "https://github.com/TheAdamHayes/AH-PF2E-Auras/releases/download/v0.1.0/module.zip"
+}

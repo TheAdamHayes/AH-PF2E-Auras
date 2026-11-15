@@ -1,0 +1,166 @@
+/* AH PF2E Auras — every rule is scoped under the module's own classes. */
+
+/* ---------- chat cards ---------- */
+.apz-card {
+  --apz-accent: #6b3fa0;
+  --apz-good: #2e7d32;
+  --apz-ok: #1565c0;
+  --apz-bad: #c62828;
+  --apz-worse: #7f0000;
+  --apz-muted: #6f6f6f;
+  --apz-line: rgba(0, 0, 0, 0.15);
+  font-size: 0.95em;
+}
+.apz-card .apz-head {
+  display: flex; align-items: center; gap: 0.4em;
+  font-weight: bold; color: var(--apz-accent);
+  border-bottom: 1px solid var(--apz-line); padding-bottom: 0.2em; margin-bottom: 0.3em;
+}
+.apz-card .apz-tag {
+  margin-left: auto; font-size: 0.75em; font-weight: normal;
+  border: 1px solid var(--apz-accent); border-radius: 3px; padding: 0 0.35em;
+}
+.apz-card p { margin: 0.25em 0; }
+.apz-card .apz-hint { font-style: italic; }
+.apz-card .apz-muted { color: var(--apz-muted); }
+.apz-card .apz-small { font-size: 0.85em; }
+.apz-card .apz-done { color: var(--apz-good); }
+.apz-card ul.apz-mini { list-style: none; margin: 0.3em 0; padding: 0; }
+.apz-card ul.apz-mini li {
+  padding: 0.1em 0.3em; border-left: 3px solid transparent; font-size: 0.9em;
+}
+.apz-card ul li span { font-weight: bold; }
+.apz-card .apz-buttons { display: flex; flex-wrap: wrap; gap: 0.3em; margin: 0.35em 0; }
+.apz-card .apz-buttons button { flex: 1 1 auto; width: auto; line-height: 1.6; }
+.apz-card button.apz-primary { font-weight: bold; }
+.apz-card .apz-gm { border-top: 1px dashed var(--apz-line); margin-top: 0.35em; padding-top: 0.25em; }
+.apz-card .apz-check { text-align: center; margin: 0.4em 0; }
+.apz-card .apz-outcomes hr { margin: 0.3em 0; }
+.apz-card .apz-degree { margin: 0.2em 0; line-height: 1.4; }
+.apz-card .apz-degree.apz-criticalSuccess > strong:first-child { color: var(--apz-good); }
+.apz-card .apz-degree.apz-success > strong:first-child { color: var(--apz-ok); }
+.apz-card .apz-degree.apz-failure > strong:first-child { color: var(--apz-bad); }
+.apz-card .apz-degree.apz-criticalFailure > strong:first-child { color: var(--apz-worse); }
+
+/* ---------- module windows ---------- */
+.ah-pf2e-auras-dialog {
+  --apz-accent: #6b3fa0;
+  --apz-muted: #8a8a8a;
+  --apz-line: rgba(127, 127, 127, 0.35);
+  --apz-warn: #c62828;
+  --apz-card-bg: rgba(127, 127, 127, 0.08);
+  max-height: 92vh;
+}
+.ah-pf2e-auras-dialog .window-content {
+  container-type: inline-size;
+  display: flex; flex-direction: column;
+  overflow: hidden; padding: 0;
+}
+.ah-pf2e-auras-dialog .window-content > p,
+.ah-pf2e-auras-dialog .window-content > .dialog-content { overflow-y: auto; min-height: 0; padding: 0.5rem; }
+.ah-pf2e-auras-dialog .apz-form {
+  display: flex; flex-direction: column;
+  flex: 1 1 0; min-height: 0;
+}
+.ah-pf2e-auras-dialog .apz-body {
+  flex: 1 1 0; min-height: 0; overflow-y: auto;
+  padding: 0.5rem 0.75rem;
+}
+.ah-pf2e-auras-dialog .apz-footer {
+  flex: 0 0 auto;
+  border-top: 1px solid var(--apz-line);
+  padding: 0.5rem 0.75rem;
+  display: flex; flex-direction: column; gap: 0.35rem;
+}
+.ah-pf2e-auras-dialog .apz-readback {
+  margin: 0; max-height: 6.5em; overflow-y: auto;
+  font-size: 0.9em; line-height: 1.35;
+  background: var(--apz-card-bg); border-left: 3px solid var(--apz-accent); padding: 0.3rem 0.5rem;
+}
+.ah-pf2e-auras-dialog .apz-status { margin: 0; font-size: 0.85em; color: var(--apz-muted); }
+.ah-pf2e-auras-dialog .apz-status.apz-unsaved { color: var(--apz-accent); font-weight: bold; }
+.ah-pf2e-auras-dialog .apz-muted { color: var(--apz-muted); font-weight: normal; }
+.ah-pf2e-auras-dialog .apz-small { font-size: 0.85em; margin: 0.2em 0; }
+.ah-pf2e-auras-dialog .apz-warn { color: var(--apz-warn); font-size: 0.85em; margin: 0.2em 0; }
+.ah-pf2e-auras-dialog .apz-warn[hidden] { display: none; }
+
+.ah-pf2e-auras-dialog .apz-section { margin-bottom: 0.75rem; }
+.ah-pf2e-auras-dialog .apz-section h3 {
+  font-size: 1.05em; margin: 0 0 0.35rem; padding-bottom: 0.15rem;
+  border-bottom: 1px solid var(--apz-line);
+}
+.ah-pf2e-auras-dialog label {
+  display: flex; flex-direction: column; gap: 0.15rem;
+  font-size: 0.9em; margin-bottom: 0.4rem;
+}
+.ah-pf2e-auras-dialog label.apz-check { flex-direction: row; align-items: center; gap: 0.4rem; }
+.ah-pf2e-auras-dialog label.apz-narrow { max-width: 10rem; }
+.ah-pf2e-auras-dialog input[type="text"],
+.ah-pf2e-auras-dialog input[type="number"],
+.ah-pf2e-auras-dialog select {
+  box-sizing: border-box; width: 100%; min-width: 0;
+  height: 1.9rem; padding: 0 0.35rem;
+}
+.ah-pf2e-auras-dialog input[type="number"] { text-align: center; }
+.ah-pf2e-auras-dialog .apz-grid2 {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0 0.75rem;
+}
+.ah-pf2e-auras-dialog .apz-row { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+.ah-pf2e-auras-dialog .apz-row.apz-end { justify-content: flex-end; }
+.ah-pf2e-auras-dialog .apz-row > input[type="text"],
+.ah-pf2e-auras-dialog .apz-row > select { flex: 1 1 12rem; width: auto; }
+.ah-pf2e-auras-dialog button { width: auto; flex: 0 0 auto; }
+.ah-pf2e-auras-dialog button.apz-primary { font-weight: bold; }
+.ah-pf2e-auras-dialog button:disabled { opacity: 0.5; cursor: not-allowed; }
+.ah-pf2e-auras-dialog button.apz-icon { padding: 0 0.45rem; }
+
+.ah-pf2e-auras-dialog .apz-outcomes-grid {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.6rem;
+}
+.ah-pf2e-auras-dialog .apz-ocard {
+  border: 1px solid var(--apz-line); border-top-width: 4px; border-radius: 4px;
+  padding: 0.4rem 0.5rem; background: var(--apz-card-bg); min-width: 0;
+}
+.ah-pf2e-auras-dialog .apz-ocard.apz-criticalSuccess { border-top-color: #2e7d32; }
+.ah-pf2e-auras-dialog .apz-ocard.apz-success { border-top-color: #1565c0; }
+.ah-pf2e-auras-dialog .apz-ocard.apz-failure { border-top-color: #c62828; }
+.ah-pf2e-auras-dialog .apz-ocard.apz-criticalFailure { border-top-color: #7f0000; }
+.ah-pf2e-auras-dialog .apz-ocard h4 { margin: 0 0 0.3rem; font-size: 1em; }
+.ah-pf2e-auras-dialog .apz-sub { font-size: 0.85em; font-weight: bold; margin: 0.3rem 0 0.15rem; }
+.ah-pf2e-auras-dialog .apz-cond {
+  display: grid; grid-template-columns: minmax(0, 1fr) 3.5rem auto; gap: 0.3rem;
+  align-items: center; margin-bottom: 0.25rem;
+}
+.ah-pf2e-auras-dialog .apz-effect {
+  display: flex; align-items: center; justify-content: space-between; gap: 0.3rem; margin-bottom: 0.25rem;
+}
+.ah-pf2e-auras-dialog .apz-effect a { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+.ah-pf2e-auras-dialog .apz-drop {
+  border: 2px dashed var(--apz-line); border-radius: 4px;
+  padding: 0.4rem; text-align: center; font-size: 0.8em; color: var(--apz-muted);
+  margin-bottom: 0.4rem;
+}
+.ah-pf2e-auras-dialog .apz-drop.apz-over { border-color: var(--apz-accent); color: var(--apz-accent); }
+
+/* list window */
+.ah-pf2e-auras-dialog ul.apz-items { list-style: none; margin: 0; padding: 0; }
+.ah-pf2e-auras-dialog li.apz-item {
+  display: flex; gap: 0.5rem; align-items: flex-start;
+  border-bottom: 1px solid var(--apz-line); padding: 0.4rem 0;
+}
+.ah-pf2e-auras-dialog li.apz-item.apz-off { opacity: 0.6; }
+.ah-pf2e-auras-dialog .apz-item-main { flex: 1 1 0; min-width: 0; }
+.ah-pf2e-auras-dialog .apz-item-buttons { display: flex; gap: 0.3rem; align-items: center; flex: 0 0 auto; }
+.ah-pf2e-auras-dialog .apz-item-buttons label { margin: 0; }
+
+@container (max-width: 700px) {
+  .apz-outcomes-grid { grid-template-columns: minmax(0, 1fr) !important; }
+}
+@container (max-width: 480px) {
+  .apz-grid2 { grid-template-columns: minmax(0, 1fr) !important; }
+  li.apz-item { flex-direction: column; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ah-pf2e-auras-dialog *, .apz-card * { transition: none !important; animation: none !important; }
+}
+.apz-card a.content-link, .apz-card a.inline-roll { white-space: normal; }
